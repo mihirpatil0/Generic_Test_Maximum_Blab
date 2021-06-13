@@ -4,6 +4,12 @@ public class GenericMaximum<G extends Comparable<G>>
 {
 	G valueOne, valueTwo, valueThree;
 	
+	/**
+	 * @param valueOne
+	 * @param valueTwo
+	 * @param valueThree
+	 * Initializing variables.
+	 */
 	public GenericMaximum(G valueOne, G valueTwo, G valueThree)
 	{
 		this.valueOne = valueOne;
@@ -16,6 +22,14 @@ public class GenericMaximum<G extends Comparable<G>>
 		return GenericMaximum.maximumValue(valueOne, valueTwo, valueThree);
 	}
 	
+	/**
+	 * @param <G>
+	 * @param valueOne
+	 * @param valueTwo
+	 * @param valueThree
+	 * @return
+	 * Comparing all types of values using generic with compareTo method.
+	 */
 	public static <G extends Comparable>G maximumValue(G valueOne, G valueTwo, G valueThree)
 	{
 		G maxValue = valueOne;
@@ -32,11 +46,24 @@ public class GenericMaximum<G extends Comparable<G>>
 		return maxValue;
 	}
 	
+	/**
+	 * @param <E>
+	 * @param valueOne
+	 * @param valueTwo
+	 * @param valueThree
+	 * @param maxValue
+	 * Printing the maximum value. 
+	 */
 	public static <E>void outputMaximum(E valueOne, E valueTwo, E valueThree, E maxValue)
 	{
 		System.out.println("Maximum amoungst : " + valueOne + " " + valueTwo + " " + valueThree + " is : " + maxValue);
 	}
 	
+	/**
+	 * @param args
+	 * passing different type of values to function.
+	 * calling function.
+	 */
 	public static void main(String[] args)
 	{
 		Integer intNumeOne = 15, intNumTwo = 55, intNumThree = 24;
