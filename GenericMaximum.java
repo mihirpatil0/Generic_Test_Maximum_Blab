@@ -1,97 +1,50 @@
 package generic.testmaximum;
 
-public class GenericMaximum
+public class GenericMaximum<G extends Comparable<G>>
 {
-	static Integer maxInteger;
-	static Float maxFloat;
-	static String maxString;
+	G valueOne, valueTwo, valueThree;
 	
-	/**
-	 * @param a
-	 * @param b
-	 * @param c
-	 * @return
-	 * Finding max integer using compareTo() method.
-	 */
-	public static int maximumInteger(Integer a, Integer b, Integer c)
+	public GenericMaximum(G valueOne, G valueTwo, G valueThree)
 	{
-		maxInteger = a;
-		
-		if(b.compareTo(maxInteger) > 0)
-		{
-			maxInteger = b;
-		}
-		if(c.compareTo(maxInteger) > 0)
-		{
-			maxInteger = c;
-		}
-		return maxInteger;
+		this.valueOne = valueOne;
+		this.valueTwo = valueTwo;
+		this.valueThree = valueThree;
 	}
 	
-	/**
-	 * @param a
-	 * @param b
-	 * @param c
-	 * @return
-	 * Finding max Float value using compareTo() method.
-	 */
-	public static Float maximumFloat(Float a, Float b, Float c)
+	public G maximumValue() 
 	{
-		maxFloat = a;
-		
-		if(b.compareTo(maxFloat) > 0)
-		{
-			maxFloat = b;
-		}
-		if(c.compareTo(maxFloat) > 0)
-		{
-			maxFloat = c;
-		}
-		return maxFloat;
+		return GenericMaximum.maximumValue(valueOne, valueTwo, valueThree);
 	}
 	
-	/**
-	 * @param a
-	 * @param b
-	 * @param c
-	 * @return
-	 * Finding max String value using compareTo() method.
-	 */
-	public static String maximumString(String a, String b, String c)
+	public static <G extends Comparable>G maximumValue(G valueOne, G valueTwo, G valueThree)
 	{
-		maxString = a;
+		G maxValue = valueOne;
 		
-		if(b.compareTo(maxString) > 0)
+		if(valueTwo.compareTo(maxValue) > 0)
 		{
-			maxString = b;
+			maxValue = valueTwo;
 		}
-		if(c.compareTo(maxString) > 0)
+		if(valueThree.compareTo(maxValue) > 0)
 		{
-			maxString = c;
+			maxValue = valueThree;
 		}
-		return maxString;
+		outputMaximum(valueOne, valueTwo, valueThree, maxValue);
+		return maxValue;
 	}
 	
+	public static <E>void outputMaximum(E valueOne, E valueTwo, E valueThree, E maxValue)
+	{
+		System.out.println("Maximum amoungst : " + valueOne + " " + valueTwo + " " + valueThree + " is : " + maxValue);
+	}
 	
-	/**
-	 * @param args
-	 * Passing integer, float and String value to function.
-	 * Calling functions.
-	 * printing the maximum number as a result.
-	 */
 	public static void main(String[] args)
 	{
 		Integer intNumeOne = 15, intNumTwo = 55, intNumThree = 24;
 		Float floatNumOne = 218.13f, floatNumTwo = 555.453f, floatNumThree = 999.999f;
 		String stringOne = "Apple", stringTwo = "Peach", stringThree = "Banana";
 		
-		maximumInteger(intNumeOne, intNumTwo, intNumThree);
-		System.out.println("Maximum amoungst : " + intNumeOne + " " + intNumTwo + " " + intNumThree + " is : " + maxInteger + "\n");
-		
-		maximumFloat(floatNumOne, floatNumTwo, floatNumThree);
-		System.out.println("Maximum amoungst : " + floatNumOne + " " + floatNumTwo + " " + floatNumThree + " is : " + maxFloat + "\n");
-		
-		maximumString(stringOne, stringTwo, stringThree);
-		System.out.println("Maximum amoungst : " + stringOne + " " + stringTwo + " " + stringThree + " is : " + maxString);
+		new GenericMaximum(intNumeOne, intNumTwo, intNumThree).maximumValue();
+		new GenericMaximum(floatNumOne, floatNumTwo, floatNumThree).maximumValue();
+		new GenericMaximum(stringOne, stringTwo, stringThree).maximumValue();
 	}
 }
